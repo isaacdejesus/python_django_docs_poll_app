@@ -31,4 +31,39 @@
 ## Running the development server/app
 ```python
 python manage.py runserver
+- Starts a local dev web server on port 8000. 
+- DO NOT USE IN PRODUCTION SETTING!
+- Development server automatically reloads code as needed.
+```
+## Creating apps
+- Environment is now a project .:. can start creating apps
+- Project is a collection of config and apps for a website. 
+- Project can have multiple apps.
+- App is a web application that does something.
+- App can be in multiple projects.
+- Apps can live anywhere in python path
+- In the same inventory as *manage.py*
+```python
+python manage.py startapp app_name
+```
+- Creates an app with following structure
+    ```python
+    app_name/
+        __init__.py
+        admin.py
+        apps.py
+        migrations/
+            __init__.py
+        models.py
+        tests.py
+        views.py
+    ```
+## Creating views
+- View is page/content to be displayed at given route
+- Inside app_name/views.py
+```python
+#app_name/views.py
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("hello, world. You are at polls index.")
 ```

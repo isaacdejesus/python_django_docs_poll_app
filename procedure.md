@@ -15,3 +15,6 @@
 ## Running app/server
 - Navigate to dir containing manage.py
     - python manage.py runserver
+## Create app
+- Navigate to folder containing *manage.py*
+    - python manage.py startapp app_name
