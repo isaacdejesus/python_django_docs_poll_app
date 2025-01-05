@@ -20,3 +20,15 @@
         - django-admin <commad>
         - manage.py <commad>
         - python -m django <command>
+- inner project_name/: Actual django project folder. It is the package name used to import anything
+  inside.
+- project_name/__init__.py: Tells python the current directory is a python package. 
+- project_name/settings.py: Contains settings and config for the project. 
+- project_name/urls.py: URL declarations for project. 
+- project_name/asgi.py: Entry point for ASGI-compatible web servers.
+- project_name/wsgi.py: Entry point for WSGI-compatible web servers.
+
+## Running the development server/app
+```python
+python manage.py runserver
+```
