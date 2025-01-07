@@ -65,5 +65,61 @@ python manage.py startapp app_name
 #app_name/views.py
 from django.http import HttpResponse
 def index(request):
-    return HttpResponse("hello, world. You are at polls index.")
+    return HttpResponse("hello, this is the index page.")
 ```
+## Map view to URL
+- In order for the view to be displayed, it must be mapped to a URL .:. need to define a URL config
+  or "URLconf" for short. 
+- URL config are defined inside each django app
+- URL config are python files named urls.py
+- Inside app_name/ create a urls.py file
+```python
+from django.urls import path
+from . import views
+urlpatterns = [
+    path("", views.index, name="index"),
+]
+```
+- app structure becomes
+    ```python
+    app_name/
+        __init__.py
+        admin.py
+        apps.py
+        migrations/
+            __init__.py
+        models.py
+        tests.py
+        urls.py
+        views.py
+    ```
+## Configure global URLconf 
+- The project's global URLconf in project_name/urls.py must be configured to include the URLconfig
+  defined in app_name/urls.py
+- import *django.urls.include*
+- use include() to add path for app_name.urls
+```python
+from django.contrib import admin
+from django.urls import include, path
+urlpatterns = [
+    path("app_name/", include("app_name.urls")),
+    path("admin/", admin.site.urls),
+]
+```
+- path() expects 2 arguments: route and view. 
+- include() allows reference other URLconfs
+- When django encounters include(), chops off whatever URL matched up to that points and sends remaining 
+  string to the included URLconf for further processing
+- include() makes it esy to plug & play URLs. Since app_name are in their own URLconf in app_name/urls.py
+  they can be placed under /app_name or /content/app_name/ or any other path root
+- ALWAYS use include() when including other URL patterns. 
+- admin.site.urls is URLconf for admin site. Doesn't require include()
+
+```python
+from django.urls import path
+from . import views
+urlpatterns = [
+    path("", views.index, name="index"),
+]
+```
+- Results in config an index view to app_name URLconf .:. can visit *localhost:8000/app_name*
