@@ -1,4 +1,4 @@
-## Createing project with django-admin startproject NAME results in following structure
+# 1. Createing project with django-admin startproject NAME results in following structure
 ```
     project_name/
         manage.py
@@ -28,14 +28,14 @@
 - *project_name/asgi.py*: Entry point for ASGI-compatible web servers.
 - *project_name/wsgi.py*: Entry point for WSGI-compatible web servers.
 
-## Running the development server/app
+# Running the development server/app
 ```python
 python manage.py runserver
 - Starts a local dev web server on port 8000. 
 - DO NOT USE IN PRODUCTION SETTING!
 - Development server automatically reloads code as needed.
 ```
-## Creating apps
+# Creating apps
 - Environment is now a project .:. can start creating apps
 - Project is a collection of config and apps for a website. 
 - Project can have multiple apps.
@@ -58,7 +58,7 @@ python manage.py startapp app_name
         tests.py
         views.py
     ```
-## Creating views
+# Creating views
 - View is page/content to be displayed at given route
 - Inside app_name/views.py
 ```python
@@ -67,7 +67,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("hello, this is the index page.")
 ```
-## Map view to URL
+# Map view to URL
 - In order for the view to be displayed, it must be mapped to a URL .:. need to define a URL config
   or "URLconf" for short. 
 - URL config are defined inside each django app
@@ -93,7 +93,7 @@ urlpatterns = [
         urls.py
         views.py
     ```
-## Configure global URLconf 
+# Configure global URLconf 
 - The project's global URLconf in project_name/urls.py must be configured to include the URLconfig
   defined in app_name/urls.py
 - import *django.urls.include*
@@ -123,3 +123,24 @@ urlpatterns = [
 ]
 ```
 - Results in config an index view to app_name URLconf .:. can visit *localhost:8000/app_name*
+# 2. Database set up
+- project_name/settings.py: Contains config for entire project. 
+    - By default database is configured to use SQLite
+    - Be sure to use a real database for real projects
+    - INSTALLED_APPS: lists django apps that are part of the project. By default django comes with 
+      following apps installed
+        - django.contrib.admin: Admin site
+        - django.contrib.auth: Authentication system
+        - django.contrib.contenttypes: Framework for content types
+        - django.contrib.sessions: Session framework
+        - django.contrib.messages: Messaging framework
+        - django.contrib.staticfiles: Framework for managing static files
+    - Note apps can be used across multiple projects
+## Creating tables
+- *python manage.py migrate*
+- Creates a database table for installed apps
+- Each of the INSTALLED_APPS requires a database table before they can be used.
+- migrate command looks at INSTALLED_APPS and creates necessary database tables according to settings
+  in project_name/settings.py 
+- migrate will only run migrations for apps in INSTALLED_APPS
+## Creating models
