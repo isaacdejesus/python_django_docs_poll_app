@@ -146,3 +146,24 @@ python manage.py migrate
   in project_name/settings.py 
 - migrate will only run migrations for apps in INSTALLED_APPS
 ## Creating models
+- Models are the database layout
+- Models are represented as python classes
+- Creating two models for the polls app
+    - Question: model has following attributes 
+        - question_text
+        - pub_date
+    - Choice: model has following attributes
+        - choice_text
+        - votes
+```python
+#app_name/models.py
+from django.db import models
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField("date published")
+
+clas Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = modeels.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+``` 
