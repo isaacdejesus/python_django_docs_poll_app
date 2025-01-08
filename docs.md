@@ -1,13 +1,13 @@
 # 1. Createing project with django-admin startproject NAME results in following structure
-```
+```python
+project_name/
+    manage.py
     project_name/
-        manage.py
-        project_name/
-            __init__.py
-            settings.py
-            urls.py
-            asgi.py
-            wsgi.py
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
 ```
 - *outer project_name/*: folder is parent dir for project. Automatically created but can be
   skipped to make current dir parent dir by adding '.' while creating project:
@@ -31,10 +31,10 @@
 # Running the development server/app
 ```python
 python manage.py runserver
+```
 - Starts a local dev web server on port 8000. 
 - DO NOT USE IN PRODUCTION SETTING!
 - Development server automatically reloads code as needed.
-```
 # Creating apps
 - Environment is now a project .:. can start creating apps
 - Project is a collection of config and apps for a website. 
@@ -47,17 +47,17 @@ python manage.py runserver
 python manage.py startapp app_name
 ```
 - Creates an app with following structure
-    ```python
-    app_name/
+```python
+app_name/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
         __init__.py
-        admin.py
-        apps.py
-        migrations/
-            __init__.py
-        models.py
-        tests.py
-        views.py
-    ```
+    models.py
+    tests.py
+    views.py
+```
 # Creating views
 - View is page/content to be displayed at given route
 - Inside app_name/views.py
@@ -81,18 +81,18 @@ urlpatterns = [
 ]
 ```
 - app structure becomes
-    ```python
-    app_name/
+```python
+app_name/
+    __init__.py
+     admin.py
+    apps.py
+    migrations/
         __init__.py
-        admin.py
-        apps.py
-        migrations/
-            __init__.py
-        models.py
-        tests.py
-        urls.py
-        views.py
-    ```
+    models.py
+    tests.py
+    urls.py
+    views.py
+```
 # Configure global URLconf 
 - The project's global URLconf in project_name/urls.py must be configured to include the URLconfig
   defined in app_name/urls.py
@@ -137,7 +137,9 @@ urlpatterns = [
         - django.contrib.staticfiles: Framework for managing static files
     - Note apps can be used across multiple projects
 ## Creating tables
-- *python manage.py migrate*
+```python
+python manage.py migrate
+```
 - Creates a database table for installed apps
 - Each of the INSTALLED_APPS requires a database table before they can be used.
 - migrate command looks at INSTALLED_APPS and creates necessary database tables according to settings
