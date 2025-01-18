@@ -90,16 +90,16 @@
   when migrate commands are ran
 
 3. run *makemigrations*
-    ```python
-    python manage.py makemigrations app_name
-    ```
-   - *makemigrations* tells django to check models for changes and to store them as a migration.
-     Migration is how django stores changes to models/database. 
+   ```python
+   python manage.py makemigrations app_name
+   ```
+- *makemigrations* tells django to check models for changes and to store them as a migration.
+  Migration is how django stores changes to models/database. 
 4. Create model tables in database
-    ```python python manage.py migrate```
-    - Migrate takes all migrations and runs them against the database. Resulting in either creating new
-      tables or modifying existing ones if models changed. .:. sync changes made to models with schema
-      in db.
+   ```python python manage.py migrate```
+- Migrate takes all migrations and runs them against the database. Resulting in either creating new
+  tables or modifying existing ones if models changed. .:. sync changes made to models with schema
+  in db.
 ### Database procedure summary
 - Create/modify models in *app_name/models.py*
 - Run *python manage.py makemigration* to create migrations for changes to models
