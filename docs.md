@@ -403,3 +403,26 @@ Choice.objects.filter(question__pub_date__year=current_year)
 c = q.choice_set.filter(choice_text__startswith="Hacking again")
 c.delete()
 ```
+# django admin
+## Creating an admin user
+```python
+python manage.py createsuperuser
+```
+- Will be asked to enter username:  #admin
+- Will be asked to enter email:     #admin@example.com
+- Will be asked to enteer pass:
+
+- Start dev server ```python python manage.py runserver```
+- Visit *localhost:8000/admin*
+- Log in
+## Register Question table to be accessible on django admin
+- navigate to *app_name/admin.py*
+```python
+from django.contrib import admin
+from .models import Question
+admin.site.register(Question)
+```
+- Now that Question model/table has been registered, it will be displayed on django admin
+- Select *Questions* which will display all available Question objects in the db and 
+  allow to modify or delete them
+- The form is generated from Question model
