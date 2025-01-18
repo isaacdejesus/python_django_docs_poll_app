@@ -36,7 +36,7 @@
   urlpatterns = [
       path("", views.index, name="index"),
   ]
-```
+  ```
 ## Config global URLcong to include app_name URLconf
 - Navigate to main project and modify *urls.py*
   ```python
@@ -47,7 +47,7 @@
       path("polls/", include("polls.urls")),
       path("admin/", admin.site.urls),
   ]
-```
+  ```
 ## Visit view
 - *python manage.py runserver*
 - Visit *localhost:8000/app_name*
