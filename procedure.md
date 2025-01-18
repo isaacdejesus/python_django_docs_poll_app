@@ -21,32 +21,32 @@
     - python manage.py startapp app_name
 ## Create a view
 - Navigate to app_name folder
-```python
-#app_name/views.py
-from django.http import HttpResponse
-def index(request):
+  ```python
+  #app_name/views.py
+  from django.http import HttpResponse
+  def index(request):
     return HttpResponse("Hello from index of app_name")
-```
+  ```
 ## Map view to URL
 - Navigate to app_name and create *urls.py*
-```python
-#app_name/urls.py
-from django.urls import path
-from . import views
-urlpatterns = [
-    path("", views.index, name="index"),
-]
+  ```python
+  #app_name/urls.py
+  from django.urls import path
+  from . import views
+  urlpatterns = [
+      path("", views.index, name="index"),
+  ]
 ```
 ## Config global URLcong to include app_name URLconf
 - Navigate to main project and modify *urls.py*
-```python
-#project_name/urls.py
-from django.contrib import admin
-from django.urls import include, path
-urlpatterns = [
-    path("polls/", include("polls.urls")),
-    path("admin/", admin.site.urls),
-]
+  ```python
+  #project_name/urls.py
+  from django.contrib import admin
+  from django.urls import include, path
+  urlpatterns = [
+      path("polls/", include("polls.urls")),
+      path("admin/", admin.site.urls),
+  ]
 ```
 ## Visit view
 - *python manage.py runserver*
