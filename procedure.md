@@ -58,18 +58,18 @@ urlpatterns = [
 ```python python manage.py migrate```
 ## General process to create database and tables is
 1. Create models in *app_name/models*
-```python
-# polls/models.py
-from django.db import models
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField("date published")
+    ```python
+    # polls/models.py
+    from django.db import models
+    class Question(models.Model):
+        question_text = models.CharField(max_length=200)
+        pub_date = models.DateTimeField("date published")
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-```
+    class Choice(models.Model):
+        question = models.ForeignKey(Question, on_delete=models.CASCADE)
+        choice_text = models.CharField(max_length=200)
+        votes = models.IntegerField(default=0)
+    ```
 2. Activating models
 - To include apps in project need to reference app config in INSTALLED_APPS setting of project.
   Ex. *app_name* polls. The PollsConfig class is in *polls/apps.py* file .:. dotted path is
@@ -90,16 +90,16 @@ class Choice(models.Model):
   when migrate commands are ran
 
 3. run *makemigrations*
-```python
-python manage.py makemigrations app_name
-```
-- *makemigrations* tells django to check models for changes and to store them as a migration.
-  Migration is how django stores changes to models/database. 
+    ```python
+    python manage.py makemigrations app_name
+    ```
+   - *makemigrations* tells django to check models for changes and to store them as a migration.
+     Migration is how django stores changes to models/database. 
 4. Create model tables in database
-```python python manage.py migrate```
-- Migrate takes all migrations and runs them against the database. Resulting in either creating new
-  tables or modifying existing ones if models changed. .:. sync changes made to models with schema
-  in db.
+    ```python python manage.py migrate```
+    - Migrate takes all migrations and runs them against the database. Resulting in either creating new
+      tables or modifying existing ones if models changed. .:. sync changes made to models with schema
+      in db.
 ### Database procedure summary
 - Create/modify models in *app_name/models.py*
 - Run *python manage.py makemigration* to create migrations for changes to models
