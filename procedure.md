@@ -106,7 +106,6 @@
 - Add app to project. See 3 above
 - Run *python manage.py migrate* to apply changes to database
 ## Adding a __str__() method to models in order to get better print outs
-    ```python
     # polls/models.py
     from django.db import models
     class Question(models.Model):
@@ -123,7 +122,6 @@
         votes = models.IntegerField(default=0)
         def __str__(self):
             return self.choice_text
-    ``` 
 ## Django admin
 - Create user
   ```python
