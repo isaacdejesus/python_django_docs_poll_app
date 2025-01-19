@@ -105,4 +105,41 @@
 - Run *python manage.py makemigration* to create migrations for changes to models
 - Add app to project. See 3 above
 - Run *python manage.py migrate* to apply changes to database
+## Adding a __str__() method to models in order to get better print outs
+    ```python
+    # polls/models.py
+    from django.db import models
+    class Question(models.Model):
+        question_text = models.CharField(max_length=200)
+        pub_date = models.DateTimeField("date published")
+        def __str__(self):
+            return self.question_text
+        def was_published_recently(self):
+            return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
+    class Choice(models.Model):
+        question = models.ForeignKey(Question, on_delete=models.CASCADE)
+        choice_text = models.CharField(max_length=200)
+        votes = models.IntegerField(default=0)
+        def __str__(self):
+            return self.choice_text
+
+    ```
+## Django admin
+- Create user
+  ```python
+  python manage.py createsuperuser
+  ```
+- Will be prompted to enter username, email and pass
+- Start up *python manage.py runserver*
+- Visit admin site: *localhost:8000/admin*
+### Making the app accessible in django admin
+-  Need to tell admin that Question objects have an admin interface
+```python
+# polls/admin.py
+from django.contrib import admin
+from .models import Question
+admin.site.register(Question)
+```
+- Now Question objects will be visible on django admin. Allowing us to pick a given object
+  then modify or delete.
