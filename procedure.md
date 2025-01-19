@@ -123,8 +123,7 @@
         votes = models.IntegerField(default=0)
         def __str__(self):
             return self.choice_text
-
-    ```
+    ``` 
 ## Django admin
 - Create user
   ```python
@@ -134,12 +133,12 @@
 - Start up *python manage.py runserver*
 - Visit admin site: *localhost:8000/admin*
 ### Making the app accessible in django admin
--  Need to tell admin that Question objects have an admin interface
-```python
-# polls/admin.py
-from django.contrib import admin
-from .models import Question
-admin.site.register(Question)
-```
+- Need to tell admin that Question objects have an admin interface
+  ```python
+  # polls/admin.py
+  from django.contrib import admin
+  from .models import Question
+  admin.site.register(Question)
+  ```
 - Now Question objects will be visible on django admin. Allowing us to pick a given object
   then modify or delete.
