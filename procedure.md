@@ -2,7 +2,7 @@
 ## Create virtual environment
 - Navigate to project_folder
 - Create env
-    - ```python python -m venv env```
+    - python -m venv env
 - Activate virtual env
     - source env/bin/activate
 - Deactivate virtual env

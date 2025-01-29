@@ -196,11 +196,11 @@ class Choice(models.Model):
 INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "django.contrib.admin",
-    django.contrib.auth,
-    django.contrib.contenttypes,
-    django.contrib.sessions,
-    django.contrib.messages,
-    django.contrib.staticfiles,
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 ```
 - Now django knows to include *polls* app
@@ -426,3 +426,4 @@ admin.site.register(Question)
 - Select *Questions* which will display all available Question objects in the db and 
   allow to modify or delete them
 - The form is generated from Question model
+# Finished part 2. Start at Part 3 whenever I return
