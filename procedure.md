@@ -1,10 +1,10 @@
 # 1. Set up and creating project
 ## Create virtual environment
 - Navigate to project_folder
-- Create env
-    - python -m venv env
-- Activate virtual env
-    - source env/bin/activate
+- Create .venv virtual environment as hidden folder
+    - python -m venv .venv
+- Activate virtual environment .venv
+    - source .venv/bin/activate
 - Deactivate virtual env
     - deactivate
 ## Install django
